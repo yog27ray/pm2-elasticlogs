@@ -1,12 +1,12 @@
 const elasticsearch = require('elasticsearch');
 
 class ElasticLib {
-    constructor(host, index){
+    constructor(host, index, types = 'logs'){
         this.elasticClient = new elasticsearch.Client({
             host: host || 'http://localhost:9200',
         });
         this.index = index || 'logs';
-        this.types = ['logs'];
+        this.types = types.split(',');
         this.createIndex();
     }
 
