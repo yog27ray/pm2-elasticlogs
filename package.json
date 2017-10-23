@@ -15,7 +15,8 @@
   "config" : {
     "elasticsearch_host" : "http://localhost:9200",
     "elasticsearch_index" : "logs",
-    "app_name" : "all"
+    "app_name" : "all",
+    "elasticsearch_type" : "logs"
   },
   "apps" : [{
     "merge_logs"         : true,

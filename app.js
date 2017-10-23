@@ -5,7 +5,7 @@ const pmx = require('pmx');
 const packageJSON =  require('./package');
 const conf = pmx.initModule();
 const elasticLibModule = require('./libs/elasticsearch');
-const elasticLib = new elasticLibModule(conf.elasticsearch_host, conf.elasticsearch_index);
+const elasticLib = new elasticLibModule(conf.elasticsearch_host, conf.elasticsearch_index, conf.elasticsearch_type);
 /**
  * Change default host to elasticsearch : pm2 set pm2-elasticlogs:elasticsearch_host 'http://localhost:9200'
  *
@@ -25,6 +25,6 @@ pm2.Client.launchBus(function(err, bus) {
             message : packet.data,
             application : packet.process.name,
             process_id : packet.process.pm_id,
-        }).catch((e) => {console.error(e)});
+        }, conf.elasticsearch_type).catch((e) => {console.error(e)});
     });
 });
