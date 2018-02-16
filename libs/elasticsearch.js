@@ -68,9 +68,10 @@ class ElasticLib {
      */
     add(body, type='logs') {
         body.added = new Date();
+        body.type = type;
         return this.elasticClient.index({
             index: this.index,
-            type: type,
+            type: 'doc',
             body: body
         });
     }
