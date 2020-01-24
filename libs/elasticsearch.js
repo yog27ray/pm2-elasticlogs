@@ -71,7 +71,7 @@ class ElasticLib {
         body.type = type;
         return this.elasticClient.index({
             index: this.index,
-            type: 'doc',
+            type: '_doc',
             body: body
         });
     }
